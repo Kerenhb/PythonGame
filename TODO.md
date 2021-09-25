@@ -9,7 +9,10 @@
 ## Main Game Class
 * Sets up the Rooms, Map, etc
 * As well as the main game loop
+  * Need to to parse text commands (move, pick up, drop, look, etc) 
 * Creates a win condition that's checked every time you enter the loop (e.g. bookshelf contains book)
+
+Then can complete the basic example from https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
 
 # Misc Thoughts
 * How to do object interactions?
