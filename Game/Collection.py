@@ -1,4 +1,4 @@
-from Game.objects import BOOK
+from Game.Objects import BOOK
 
 class Collection:
   def __init__(self, name):

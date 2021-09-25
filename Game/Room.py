@@ -1,5 +1,5 @@
 from Game.Collection import Collection
-from Game.objects import BOOK
+from Game.Objects import BOOK
 
 class Room:
   def __init__(self, name, description, storage=None):
