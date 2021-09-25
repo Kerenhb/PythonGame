@@ -1,14 +1,10 @@
 # Create
-## Player
-* Name?
-* Inventory (collection of objects?)
-* Current Room (or could go in the Map)
-
 ## Map
 * Add a basic map, where you can define what rooms are next to each other
     * Perhaps a basic 2d array type thing?
 * Add ability to move in each compass direction (N/E/W/S), obviously first checking there is a room there
   * Part of Room, Map or Person?
+* Current Room the player is in (or could go in the Player)
 
 ## Main Game Class
 * Sets up the Rooms, Map, etc

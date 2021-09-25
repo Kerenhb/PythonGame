@@ -17,6 +17,7 @@ class TestCollection(TestCase):
     draw = Collection("Draw")
     draw.add("Pencil")
     self.assertEqual(["Pencil"], draw.objects)
+
     draw.remove("Pencil")
     self.assertEqual([], draw.objects)
 
@@ -24,6 +25,7 @@ class TestCollection(TestCase):
     draw = Collection("Draw")
     draw.add("Pencil")
     self.assertEqual(["Pencil"], draw.objects)
+
     draw.remove("Ruler")
     self.assertEqual(["Pencil"], draw.objects)
 
