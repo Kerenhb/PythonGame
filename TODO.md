@@ -1,16 +1,4 @@
 # Create
-## Object
-* File of string literals
-* e.g. BOOK = "Book", then can use them everywhere
-
-## Collection
-* Has a name and list of objects
-* Can add or remove objects
-  * with the obvious checks  
-* Has a str function that prints out
-  * "The Bookshelf is empty" or "The Bookshelf contains a Book (, xxx and yyy)"
-* Add a list of collections to a room and add it to what's printed out when you enter it, unless empty
-
 ## Player
 * Name?
 * Inventory (collection of objects?)
@@ -32,3 +20,8 @@
   * Could have different states within the room or object (e.g. door locked or not)
   * Could switch out the room entirely in the map (so the door is always unlocked there), but then 
   need to copy across the collections, etc
+
+* What about "There is a book lying in the center of the bed."???
+  * Maybe have subtypes for 'in' verses 'on'?
+  * Or maybe could have a map of things in a room, with a description so
+    * {BOOK, "There is a book lying in the center of the bed."} 

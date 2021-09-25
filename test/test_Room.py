@@ -1,9 +1,30 @@
 from unittest import TestCase
 
 from Game.Room import Room
+from Game.Collection import Collection
 
 class TestRoom(TestCase):
-  def test_enter(self):
+  def test_str_storage_0(self):
+    testRoom = Room("Name", "Description", [])
+    self.assertEqual("", testRoom.str_storage())
+
+  def test_str_storage_1(self):
+    testCollection = Collection("Collection")
+    testRoom = Room("Name", "Description", [testCollection])
+    self.assertEqual(f'\n{str(testCollection)}', testRoom.str_storage())
+
+  def test_str_storage_many(self):
+    testCollection1 = Collection("Collection1")
+    testCollection2 = Collection("Collection2")
+    testCollection3 = Collection("Collection3")
+    testRoom = Room("Name", "Description", [testCollection1, testCollection2, testCollection3])
+    self.assertEqual(f'\n{str(testCollection1)}\n{str(testCollection2)}\n{str(testCollection3)}', testRoom.str_storage())
+
+  def test_str(self):
+    testCollection = Collection("Collection")
+    testRoom = Room("Name", "Description", [testCollection])
+    self.assertEqual(f'\033[1mName\033[0m\nDescription\n{str(testCollection)}', str(testRoom))
+
+  def test_str_no_storage(self):
     testRoom = Room("Name", "Description")
-    self.assertEqual(testRoom.name, "Name")
-    self.assertEqual(testRoom.description, "Description")
+    self.assertEqual("\033[1mName\033[0m\nDescription", str(testRoom))
