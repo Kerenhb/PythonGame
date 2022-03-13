@@ -4,37 +4,37 @@ from Game.Player import Player
 
 class TestPlayer(TestCase):
   def test_str_empty(self):
-    player1 = Player("Player1")
-    self.assertEqual("You are Player1 and your pockets are empty", str(player1))
+    player = Player("Player")
+    self.assertEqual("You are Player and your pockets are empty", str(player))
 
   def test_str_non_empty(self):
-    player1 = Player("Player1")
-    player1.pickUp("Pencil")
-    player1.pickUp("Comb")
-    self.assertEqual("You are Player1 and are holding: Pencil, Comb", str(player1))
+    player = Player("Player")
+    player.pickUp("Pencil")
+    player.pickUp("Comb")
+    self.assertEqual("You are Player and are holding: Pencil, Comb", str(player))
 
   def test_pickUp(self):
-    player1 = Player("Player1")
-    player1.pickUp("Phone")
+    player = Player("Player")
+    player.pickUp("Phone")
 
-    player2 = Player("Player2")
-    player2.pickUp("Pen")
-
-    self.assertEqual("are holding: Phone", player1.str_inventory())
-    self.assertEqual("are holding: Pen", player2.str_inventory())
+    self.assertEqual("are holding: Phone", player.str_inventory())
 
   def test_drop_existing(self):
-    player1 = Player("Player1")
-    player1.pickUp("Phone")
-    self.assertEqual("are holding: Phone", player1.str_inventory())
+    player = Player("Player")
+    player.pickUp("Phone")
+    self.assertEqual("are holding: Phone", player.str_inventory())
 
-    player1.drop("Phone")
-    self.assertEqual("your pockets are empty", player1.str_inventory())
+    player.drop("Phone")
+    self.assertEqual("your pockets are empty", player.str_inventory())
 
   def test_ignore_drop_non_existing(self):
-    player1 = Player("Player1")
-    player1.pickUp("Phone")
-    self.assertEqual("are holding: Phone", player1.str_inventory())
+    player = Player("Player")
+    player.pickUp("Phone")
+    self.assertEqual("are holding: Phone", player.str_inventory())
 
-    player1.drop("Pen")
-    self.assertEqual("are holding: Phone", player1.str_inventory())
+    try:
+      player.drop("Pen")
+    except Exception as e:
+      self.assertEqual("Your not holding Pen", str(e))
+
+    self.assertEqual("are holding: Phone", player.str_inventory())

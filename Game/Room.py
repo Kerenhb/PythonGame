@@ -1,5 +1,6 @@
 from Game.Collection import Collection
-from Game.Objects import BOOK
+from Game.Commands import enter
+from Game.Items import BOOK
 
 class Room:
   def __init__(self, name, description, storage=None, north=None, south=None, west=None, east=None):
@@ -14,10 +15,6 @@ class Room:
     self.south = south
     self.west = west
     self.east = east
-
-  def enter(self):
-    print("You enter " + self.name + "\n")
-    print(self) # Consider making this pure?
 
   def set_north(self, room):
     self.north = room
@@ -46,7 +43,7 @@ class Room:
     return output
 
   def __str__(self):
-    return f'\033[1m{self.name}\033[0m\n{self.description}{self.str_storage()}\n{self.str_adjacent()}'
+    return f'\033[1m{self.name}\033[0m\n{self.description}{self.str_storage()}{self.str_adjacent()}'
 
 if __name__ == "__main__":
   # Example taken from: https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
@@ -60,5 +57,6 @@ if __name__ == "__main__":
   hallway = Room("The Hallway", "An empty hallway", [], bedroom)
   bedroom.set_south(hallway)
 
-  bedroom.enter()
-  hallway.enter()
+  print(enter(bedroom))
+  print("\n")
+  print(enter(hallway))

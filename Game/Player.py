@@ -5,12 +5,13 @@ class Player:
 
   def pickUp(self, object):
     self.inventory.append(object)
+    return self
 
-  def drop(self, object):
-    if(self.inventory.__contains__(object)):
-      self.inventory.remove(object)
+  def drop(self, item):
+    if(self.inventory.__contains__(item)):
+      self.inventory.remove(item)
     else:
-      print(f'Your not holding {object}')
+      raise Exception(f'Your not holding {item}')
 
   def str_inventory(self):
     if(len(self.inventory)):

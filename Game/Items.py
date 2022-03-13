@@ -1,0 +1,2 @@
+BOOK = "Book"
+PHONE = "Phone"

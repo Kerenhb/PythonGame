@@ -10,24 +10,28 @@ class TestCollection(TestCase):
     shelf = Collection("Shelf")
     shelf.add("Giraffe")
 
-    self.assertEqual(["Pencil"], draw.objects)
-    self.assertEqual(["Giraffe"], shelf.objects)
+    self.assertEqual(["Pencil"], draw.items)
+    self.assertEqual(["Giraffe"], shelf.items)
 
   def test_remove_existing(self):
     draw = Collection("Draw")
     draw.add("Pencil")
-    self.assertEqual(["Pencil"], draw.objects)
+    self.assertEqual(["Pencil"], draw.items)
 
     draw.remove("Pencil")
-    self.assertEqual([], draw.objects)
+    self.assertEqual([], draw.items)
 
   def test_ignore_remove_non_existing(self):
     draw = Collection("Draw")
     draw.add("Pencil")
-    self.assertEqual(["Pencil"], draw.objects)
+    self.assertEqual(["Pencil"], draw.items)
 
-    draw.remove("Ruler")
-    self.assertEqual(["Pencil"], draw.objects)
+    try:
+      draw.remove("Ruler")
+    except Exception as e:
+      self.assertEqual("Draw does not contain Ruler", str(e))
+
+    self.assertEqual(["Pencil"], draw.items)
 
   def test_str_empty(self):
     draw = Collection("Draw")

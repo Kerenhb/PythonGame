@@ -1,24 +1,24 @@
-from Game.Objects import BOOK
+from Game.Items import BOOK
 
 class Collection:
   def __init__(self, name):
     self.name = name
-    self.objects = []
+    self.items = []
 
-  def add(self, object):
-    self.objects.append(object)
+  def add(self, item):
+    self.items.append(item)
     return self
 
-  def remove(self, object):
-    if(self.objects.__contains__(object)):
-      self.objects.remove(object)
+  def remove(self, item):
+    if(self.items.__contains__(item)):
+      self.items.remove(item)
     else:
-      print(f'{self.name} does not contain {object}')
+      raise Exception(f'{self.name} does not contain {item}')
     return self
 
   def __str__(self):
-    if(len(self.objects)):
-      return f'The {self.name} contains: {", ".join(self.objects)}'
+    if(len(self.items)):
+      return f'The {self.name} contains: {", ".join(self.items)}'
     else:
       return f'The {self.name} is empty'
 

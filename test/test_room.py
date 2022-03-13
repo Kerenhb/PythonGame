@@ -38,6 +38,6 @@ class TestRoom(TestCase):
 
     self.assertEqual(
         "\033[1mName1\033[0m\nDescription1"
-        "\n\nSouth is Name2"
+        "\nSouth is Name2"
         "\nWest is Name3",
         str(testRoom1))

@@ -1,7 +1,6 @@
 # Create
 ## Main Game Class
-* Sets up the Rooms, Map, etc
-* As well as the main game loop
+* Setup as well as the main game loop
   * Need to parse text commands (move, pick up, drop, look, etc) 
   * More commands here: http://www.mrbillsadventureland.com/howto/intfiction/textplay.htm
 * Creates a win condition that's checked every time you enter the loop (e.g. bookshelf contains book)
