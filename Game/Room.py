@@ -1,5 +1,4 @@
 from Game.Collection import Collection
-from Game.Commands import enter
 from Game.Items import BOOK
 
 class Room:
@@ -57,6 +56,6 @@ if __name__ == "__main__":
   hallway = Room("The Hallway", "An empty hallway", [], bedroom)
   bedroom.set_south(hallway)
 
-  print(enter(bedroom))
+  print(bedroom)
   print("\n")
-  print(enter(hallway))
+  print(hallway)

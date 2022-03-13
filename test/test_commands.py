@@ -13,6 +13,15 @@ class TestCommands(TestCase):
         f'You enter Name\n'
         +'\033[1mName\033[0m\nDescription', enter(testRoom))
 
+  def test_move_existing(self):
+    testRoom2 = Room("Name", "Description")
+    testRoom1 = Room("Name", "Description", None, testRoom2)
+    self.assertEqual(testRoom2, move("North", testRoom1))
+
+  def test_move_missing(self):
+    testRoom1 = Room("Name", "Description")
+    self.assertEqual(testRoom1, move("North", testRoom1))
+
   def test_retrieveItem_existing(self):
     player = Player("Player")
     draw = Collection("Draw").add(BOOK)
