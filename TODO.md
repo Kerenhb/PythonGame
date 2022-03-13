@@ -1,16 +1,12 @@
 # Create
-## Map
-* Add a basic map, where you can define what rooms are next to each other
-    * Perhaps a basic 2d array type thing?
-* Add ability to move in each compass direction (N/E/W/S), obviously first checking there is a room there
-  * Part of Room, Map or Person?
-* Current Room the player is in (or could go in the Player)
-
 ## Main Game Class
 * Sets up the Rooms, Map, etc
 * As well as the main game loop
-  * Need to to parse text commands (move, pick up, drop, look, etc) 
+  * Need to parse text commands (move, pick up, drop, look, etc) 
+  * More commands here: http://www.mrbillsadventureland.com/howto/intfiction/textplay.htm
 * Creates a win condition that's checked every time you enter the loop (e.g. bookshelf contains book)
+* Add ability to move in each compass direction (N/E/W/S), obviously first checking there is a room there
+* Current Room the player is in (or could go in the Player)
 
 Then can complete the basic example from https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
 

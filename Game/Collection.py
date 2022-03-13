@@ -7,12 +7,14 @@ class Collection:
 
   def add(self, object):
     self.objects.append(object)
+    return self
 
   def remove(self, object):
     if(self.objects.__contains__(object)):
       self.objects.remove(object)
     else:
       print(f'{self.name} does not contain {object}')
+    return self
 
   def __str__(self):
     if(len(self.objects)):

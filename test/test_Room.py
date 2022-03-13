@@ -28,3 +28,16 @@ class TestRoom(TestCase):
   def test_str_no_storage(self):
     testRoom = Room("Name", "Description")
     self.assertEqual("\033[1mName\033[0m\nDescription", str(testRoom))
+
+  def test_str_with_rooms(self):
+    testRoom1 = Room("Name1", "Description1")
+    testRoom2 = Room("Name2", "Description2")
+    testRoom3 = Room("Name3", "Description3")
+    testRoom1.set_south(testRoom2)
+    testRoom1.set_west(testRoom3)
+
+    self.assertEqual(
+        "\033[1mName1\033[0m\nDescription1"
+        "\n\nSouth is Name2"
+        "\nWest is Name3",
+        str(testRoom1))
