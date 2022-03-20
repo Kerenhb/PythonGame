@@ -1,12 +1,14 @@
 # Create
 ## Main Game Class
-* Current Room the player is in (or could go in the Player)
 * Setup as well as the main game loop
-  * Consider a better visualisation of the room layout (maybe outside of code) 
-* More commands
-  * Need to parse text commands (move, pick up, drop, look, etc) 
-  * More commands here: http://www.mrbillsadventureland.com/howto/intfiction/textplay.htm
-* Creates a win condition that's checked every time you enter the loop (e.g. bookshelf contains book)
+  * Consider a better visualisation of the room layout (maybe outside of code)
+  * Print 'player.location' at the start of each loop
+* Add more commands here: http://www.mrbillsadventureland.com/howto/intfiction/textplay.htm
+* Creates a win condition that's checked every time you enter the loop
+  * e.g. bookshelf contains book
+  * Player is in X location (could be outside the map)
+  * player inventory contains an item / key
+  * Put into a function so it's easier to change later
 
 Then can complete the basic example from https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
 

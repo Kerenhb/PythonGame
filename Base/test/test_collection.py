@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from Game.Collection import Collection
+from Base.Collection import Collection
 
 class TestCollection(TestCase):
   def test_add(self):

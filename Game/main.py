@@ -1,6 +1,7 @@
-from Game.Collection import Collection
-from Game.Room import Room
-from Game.Commands import *
+from Base.Collection import Collection
+from Base.Room import Room
+from Base.Player import Player
+from Base.Commands import *
 from Game.Items import BOOK
 
 def setup():
@@ -14,9 +15,10 @@ def setup():
   hallway = Room("The Hallway", "An empty hallway", [], bedroom)
   bedroom.set_south(hallway)
 
-  return bedroom
+  player = Player("Keren", bedroom)
+  return player
 
 if __name__ == "__main__":
-  start = setup()
-  print(enter(start))
-  print(move("South", start))
+  player = setup()
+  print(player.location)
+  print(move("South", player))

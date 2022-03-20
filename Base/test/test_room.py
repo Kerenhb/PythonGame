@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from Game.Room import Room
-from Game.Collection import Collection
+from Base.Room import Room
+from Base.Collection import Collection
 
 class TestRoom(TestCase):
   def test_str_storage_0(self):

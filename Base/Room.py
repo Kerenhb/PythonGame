@@ -1,4 +1,4 @@
-from Game.Collection import Collection
+from Base import Collection
 from Game.Items import BOOK
 
 class Room:
