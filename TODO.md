@@ -1,9 +1,6 @@
 # Create
 ## Main Game Class
-* Setup as well as the main game loop
-  * Consider a better visualisation of the room layout (maybe outside of code)
-  * Print 'player.location' at the start of each loop
-* Add more commands here: http://www.mrbillsadventureland.com/howto/intfiction/textplay.htm
+* Could add Examine (x) - provides a specific description of something present in the room or that the player is carrying.
 * Creates a win condition that's checked every time you enter the loop
   * e.g. bookshelf contains book
   * Player is in X location (could be outside the map)

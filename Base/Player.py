@@ -6,7 +6,7 @@ class Player:
     self.location = location
     self.inventory = []
 
-  def pickUp(self, object):
+  def take(self, object):
     self.inventory.append(object)
     return self
 
@@ -34,5 +34,5 @@ if __name__ == "__main__":
   bedroom = Room("Bedroom", "An empty bedroom")
   player = Player("Keren", bedroom)
   print(player)
-  player.pickUp("Phone")
+  player.take("Phone")
   print(player)

@@ -1,24 +1,48 @@
-from Base.Collection import Collection
-from Base.Room import Room
-from Base.Player import Player
 from Base.Commands import *
-from Game.Items import BOOK
+from Game.setup import setup
 
-def setup():
-  # Example taken from: https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
-  bedroomDescription = "The white walls of the room are matched by the color of the furniture.\
-  A rack of shoes sits neatly in one corner and the dresser and bedside table are clear of dust."
-  dresser = Collection("Dresser").add(BOOK)
-  table = Collection("Bedside table")
-  bedroom = Room("Julianna's Bedroom", bedroomDescription, [dresser, table])
-
-  hallway = Room("The Hallway", "An empty hallway", [], bedroom)
-  bedroom.set_south(hallway)
-
-  player = Player("Keren", bedroom)
-  return player
+def parseCommand(command):
+  if command == "north" or command == "n":
+    moveNorth(player)
+    return f'You move North and enter {player.location.name}'
+  elif command == "south" or command == "s":
+    moveSouth(player)
+    return f'You move South and enter {player.location.name}'
+  elif command == "west" or command == "w":
+    moveWest(player)
+    return f'You move West and enter {player.location.name}'
+  elif command == "east" or command == "e":
+    moveEast(player)
+    return f'You move East and enter {player.location.name}'
+  # elif command == "take" or command == "t":
+  #   takeItem(player, item, collection)
+  # elif command == "place" or command == "p":
+  #   placeItem(player, item, collection)
+  elif command == "look" or command == "l":
+    return player.location
+  elif command == "inventory" or command == "i":
+    return player.str_inventory()
+  elif command == "help" or command == "h":
+    return helpText()
+  else:
+    return command + " is not a valid command\n" + helpText()
 
 if __name__ == "__main__":
-  player = setup()
-  print(player.location)
-  print(move("South", player))
+  player = setup("Keren")
+
+  while True:
+    print(player.location)
+    command = input("\nWhat do you want to do?")
+
+    try:
+      command = command.lower()
+      if command == "quit" or command == "q" or command == "exit":
+        print("Quiting the game")
+        break
+
+      print(parseCommand(command))
+    except Exception as e:
+      print(e)
+
+  # print(move("South", player))
+

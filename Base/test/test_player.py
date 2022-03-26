@@ -13,22 +13,22 @@ class TestPlayer(TestCase):
   def test_str_non_empty(self):
     room = Room("Room", "An empty room")
     player = Player("Player", room)
-    player.pickUp("Pencil")
-    player.pickUp("Comb")
+    player.take("Pencil")
+    player.take("Comb")
     self.assertEqual("You are Player, you're holding: Pencil, Comb and you're currently in Room",
                      str(player))
 
   def test_pickUp(self):
     room = Room("Room", "An empty room")
     player = Player("Player", room)
-    player.pickUp("Phone")
+    player.take("Phone")
 
     self.assertEqual("you're holding: Phone", player.str_inventory())
 
   def test_drop_existing(self):
     room = Room("Room", "An empty room")
     player = Player("Player", room)
-    player.pickUp("Phone")
+    player.take("Phone")
     self.assertEqual("you're holding: Phone", player.str_inventory())
 
     player.drop("Phone")
@@ -37,7 +37,7 @@ class TestPlayer(TestCase):
   def test_ignore_drop_non_existing(self):
     room = Room("Room", "An empty room")
     player = Player("Player", room)
-    player.pickUp("Phone")
+    player.take("Phone")
     self.assertEqual("you're holding: Phone", player.str_inventory())
 
     try:
