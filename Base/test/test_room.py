@@ -1,29 +1,33 @@
 from unittest import TestCase
 
 from Base.Room import Room
-from Base.Collection import Collection
+from Base.Storage import Storage
 
 class TestRoom(TestCase):
   def test_str_storage_0(self):
-    testRoom = Room("Name", "Description", [])
+    testRoom = Room("Name", "Description")
     self.assertEqual("", testRoom.str_storage())
 
   def test_str_storage_1(self):
-    testCollection = Collection("Collection")
-    testRoom = Room("Name", "Description", [testCollection])
-    self.assertEqual(f'\n{str(testCollection)}', testRoom.str_storage())
+    testStorage = Storage()
+    testRoom = Room("Name", "Description", {"Storage": testStorage})
+    self.assertEqual(f'\n{testStorage.toString("Storage")}', testRoom.str_storage())
 
   def test_str_storage_many(self):
-    testCollection1 = Collection("Collection1")
-    testCollection2 = Collection("Collection2")
-    testCollection3 = Collection("Collection3")
-    testRoom = Room("Name", "Description", [testCollection1, testCollection2, testCollection3])
-    self.assertEqual(f'\n{str(testCollection1)}\n{str(testCollection2)}\n{str(testCollection3)}', testRoom.str_storage())
+    testStorage1 = Storage()
+    testStorage2 = Storage()
+    testStorage3 = Storage()
+    testRoom = Room("Name", "Description",
+                    {"Storage1": testStorage1, "Storage2": testStorage2, "Storage3": testStorage3})
+    self.assertEqual(f'\n{testStorage1.toString("Storage1")}'
+                     f'\n{testStorage2.toString("Storage2")}'
+                     f'\n{testStorage3.toString("Storage3")}',
+                     testRoom.str_storage())
 
   def test_str(self):
-    testCollection = Collection("Collection")
-    testRoom = Room("Name", "Description", [testCollection])
-    self.assertEqual(f'\033[1mName\033[0m\nDescription\n{str(testCollection)}', str(testRoom))
+    testStorage = Storage()
+    testRoom = Room("Name", "Description", {"Storage": testStorage})
+    self.assertEqual(f'\033[1mName\033[0m\nDescription\n{testStorage.toString("Storage")}', str(testRoom))
 
   def test_str_no_storage(self):
     testRoom = Room("Name", "Description")

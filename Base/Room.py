@@ -1,10 +1,10 @@
-from Base import Collection
+from Base.Storage import Storage
 from Game.Items import BOOK
 
 class Room:
   def __init__(self, name, description, storage=None, north=None, south=None, west=None, east=None):
     if storage is None:
-      storage = []
+      storage = {}
 
     self.name = name
     self.description = description
@@ -37,8 +37,8 @@ class Room:
 
   def str_storage(self):
     output = ""
-    for collection in self.storage:
-      output += f'\n{str(collection)}'
+    for name, items in self.storage.items():
+      output += f'\n{items.toString(name)}'
     return output
 
   def __str__(self):
@@ -49,9 +49,8 @@ if __name__ == "__main__":
 
   bedroomDescription = "The white walls of the room are matched by the color of the furniture.\
  A rack of shoes sits neatly in one corner and the dresser and bedside table are clear of dust."
-  dresser = Collection("Dresser").add(BOOK)
-  table = Collection("Bedside table")
-  bedroom = Room("Julianna's Bedroom", bedroomDescription, [dresser, table])
+  bedroom = Room("Julianna's Bedroom", bedroomDescription,
+                 {"Dresser": Storage([BOOK]), "Bedside table": Storage()})
 
   hallway = Room("The Hallway", "An empty hallway", [], bedroom)
   bedroom.set_south(hallway)

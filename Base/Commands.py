@@ -22,13 +22,21 @@ def moveEast(player):
   else:
     raise Exception('You can not go East')
 
-def takeItem(player, item, collection):
-  collection.remove(item)
-  player.take(item)
+def takeItem(player, item, storageName):
+  possibleStorageNames = player.location.storage.keys()
+  if storageName in possibleStorageNames:
+    player.location.storage[storageName].remove(storageName, item)
+    player.take(item)
+  else:
+    raise Exception(storageName + " is not in this room")
 
-def placeItem(player, item, collection):
-  player.drop(item)
-  collection.add(item)
+def placeItem(player, item, storageName):
+  possibleStorageNames = player.location.storage.keys()
+  if storageName in possibleStorageNames:
+    player.drop(item)
+    player.location.storage[storageName].add(item)
+  else:
+    raise Exception(storageName + " is not in this room")
 
 def helpText():
   return "The commands you can use are (case-insensitive):\n" \
