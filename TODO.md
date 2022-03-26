@@ -1,6 +1,5 @@
 # Create
 ## Main Game Class
-* Get the take and place commands working
 * Could add Examine (x) - provides a specific description of something present in the room or that the player is carrying.
 * Creates a win condition that's checked every time you enter the loop
   * e.g. bookshelf contains book

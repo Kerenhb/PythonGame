@@ -10,8 +10,8 @@ class TestRoom(TestCase):
 
   def test_str_storage_1(self):
     testStorage = Storage()
-    testRoom = Room("Name", "Description", {"Storage": testStorage})
-    self.assertEqual(f'\n{testStorage.toString("Storage")}', testRoom.str_storage())
+    testRoom = Room("Name", "Description", {"storage": testStorage})
+    self.assertEqual(f'\n{testStorage.toString("storage")}', testRoom.str_storage())
 
   def test_str_storage_many(self):
     testStorage1 = Storage()
@@ -26,8 +26,8 @@ class TestRoom(TestCase):
 
   def test_str(self):
     testStorage = Storage()
-    testRoom = Room("Name", "Description", {"Storage": testStorage})
-    self.assertEqual(f'\033[1mName\033[0m\nDescription\n{testStorage.toString("Storage")}', str(testRoom))
+    testRoom = Room("Name", "Description", {"storage": testStorage})
+    self.assertEqual(f'\033[1mName\033[0m\nDescription\n{testStorage.toString("storage")}', str(testRoom))
 
   def test_str_no_storage(self):
     testRoom = Room("Name", "Description")

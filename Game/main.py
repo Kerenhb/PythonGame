@@ -14,10 +14,14 @@ def parseCommand(command):
   elif command == ["east"] or command == ["e"]:
     moveEast(player)
     return f'You move East and enter {player.location.name}'
-  # elif command[0] == "take" or command[0] == "t":
-  #   takeItem(player, item, storage)
-  # elif command[0] == "place" or command[0] == "p":
-  #   placeItem(player, item, storage)
+  elif command[0] == "take":
+    # assuming command[2] is 'from'
+    takeItem(player, command[1], command[3])
+    return f'You pick up {command[1]}'
+  elif command[0] == "place":
+    # assuming command[2] is 'in/on'
+    placeItem(player, command[1], command[3])
+    return f'You place {command[1]}'
   elif command == ["look"] or command == ["l"]:
     return player.location
   elif command == ["inventory"] or command == ["i"]:

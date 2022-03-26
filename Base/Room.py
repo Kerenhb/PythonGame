@@ -3,6 +3,7 @@ from Game.Items import BOOK
 
 class Room:
   def __init__(self, name, description, storage=None, north=None, south=None, west=None, east=None):
+    # Note storage names should be in lower case and a single word to make commands easier
     if storage is None:
       storage = {}
 
@@ -50,9 +51,9 @@ if __name__ == "__main__":
   bedroomDescription = "The white walls of the room are matched by the color of the furniture.\
  A rack of shoes sits neatly in one corner and the dresser and bedside table are clear of dust."
   bedroom = Room("Julianna's Bedroom", bedroomDescription,
-                 {"Dresser": Storage([BOOK]), "Bedside table": Storage()})
+                 {"dresser": Storage([BOOK]), "bedside table": Storage()})
 
-  hallway = Room("The Hallway", "An empty hallway", [], bedroom)
+  hallway = Room("The Hallway", "An empty hallway", {}, bedroom)
   bedroom.set_south(hallway)
 
   print(bedroom)

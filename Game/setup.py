@@ -7,12 +7,10 @@ def setup(playerName):
   # Example taken from: https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
 
   # Bedroom
-  dresser = Storage("Dresser").add(BOOK)
-  table = Storage("Bedside table")
   bedroom = Room(playerName + "'s Bedroom", "The white walls of the room are " +
                   "matched by the color of the furniture.\n A rack of shoes sits " +
                  "neatly in one corner and the dresser and bedside table are " +
-                 "clear of dust.", [dresser, table])
+                 "clear of dust.", {"dresser": Storage(), "table": Storage([BOOK])})
 
   # Hallway
   hallway = Room("The Hallway", "An empty hallway")

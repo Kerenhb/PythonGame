@@ -85,12 +85,12 @@ class TestCommands(TestCase):
 
   def test_takeItem_existing(self):
     draw = Storage([BOOK])
-    testRoom = Room("testRoom", "Description", {"Draw": draw})
+    testRoom = Room("testRoom", "Description", {"draw": draw})
     player = Player("Player", testRoom)
 
-    takeItem(player, BOOK, "Draw")
-    self.assertEqual("The Draw is empty", draw.toString("Draw"))
-    self.assertEqual("you're holding: Book", player.str_inventory())
+    takeItem(player, BOOK, "draw")
+    self.assertEqual("The draw is empty", draw.toString("draw"))
+    self.assertEqual("you're holding: book", player.str_inventory())
 
   def test_takeItem_invalid_storage(self):
     draw = Storage([BOOK])
@@ -102,30 +102,30 @@ class TestCommands(TestCase):
     except Exception as e:
       self.assertEqual('Draw is not in this room', str(e))
 
-    self.assertEqual("The Draw contains: Book", draw.toString("Draw"))
+    self.assertEqual("The Draw contains: book", draw.toString("Draw"))
     self.assertEqual("your pockets are empty", player.str_inventory())
 
   def test_takeItem_missing(self):
     draw = Storage()
-    testRoom = Room("testRoom", "Description", {"Draw": draw})
+    testRoom = Room("testRoom", "Description", {"draw": draw})
     player = Player("Player", testRoom)
 
     try:
-      takeItem(player, BOOK, "Draw")
+      takeItem(player, BOOK, "draw")
     except Exception as e:
-      self.assertEqual('Draw does not contain Book', str(e))
+      self.assertEqual('draw does not contain book', str(e))
 
-    self.assertEqual("The Draw is empty", draw.toString("Draw"))
+    self.assertEqual("The draw is empty", draw.toString("draw"))
     self.assertEqual("your pockets are empty", player.str_inventory())
 
   def test_placeItem_existing(self):
     draw = Storage()
-    testRoom = Room("testRoom", "Description", {"Draw": draw})
+    testRoom = Room("testRoom", "Description", {"draw": draw})
     player = Player("Player", testRoom).take(BOOK)
 
-    placeItem(player, BOOK, "Draw")
+    placeItem(player, BOOK, "draw")
     self.assertEqual("your pockets are empty", player.str_inventory())
-    self.assertEqual("The Draw contains: Book", draw.toString("Draw"))
+    self.assertEqual("The draw contains: book", draw.toString("draw"))
 
   def test_placeItem_invalid_storage(self):
     draw = Storage()
@@ -133,22 +133,22 @@ class TestCommands(TestCase):
     player = Player("Player", testRoom).take(BOOK)
 
     try:
-      placeItem(player, BOOK, "Draw")
+      placeItem(player, BOOK, "draw")
     except Exception as e:
-      self.assertEqual('Draw is not in this room', str(e))
+      self.assertEqual('draw is not in this room', str(e))
 
-    self.assertEqual("you're holding: Book", player.str_inventory())
-    self.assertEqual("The Draw is empty", draw.toString("Draw"))
+    self.assertEqual("you're holding: book", player.str_inventory())
+    self.assertEqual("The draw is empty", draw.toString("draw"))
 
   def test_placeItem_missing(self):
     draw = Storage()
-    testRoom = Room("testRoom", "Description", {"Draw": draw})
+    testRoom = Room("testRoom", "Description", {"draw": draw})
     player = Player("Player", testRoom)
 
     try:
-      placeItem(player, BOOK, "Draw")
+      placeItem(player, BOOK, "draw")
     except Exception as e:
-      self.assertEqual('Your not holding Book', str(e))
+      self.assertEqual('Your not holding book', str(e))
 
     self.assertEqual("your pockets are empty", player.str_inventory())
-    self.assertEqual("The Draw is empty", draw.toString("Draw"))
+    self.assertEqual("The draw is empty", draw.toString("draw"))

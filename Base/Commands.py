@@ -41,7 +41,7 @@ def placeItem(player, item, storageName):
 def helpText():
   return "The commands you can use are (case-insensitive):\n" \
          "* North (n), South (s), East (e) or West (w) - To move in those directions\n" \
-         "* Take (t), Place (p) - To take and place items\n" \
+         "* Take ITEM from STORAGE, Place ITEM in/on STORAGE - To take and place items\n" \
          "* Look (l) - Repeats description of current room\n" \
          "* Inventory (i) - Tells you what your holding\n" \
          "* Help (h) - Shows this help text\n" \
