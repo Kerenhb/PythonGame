@@ -22,3 +22,6 @@ def setup(playerName):
   # Player
   player = Player(playerName, bedroom)
   return player
+
+def winCondition(player):
+  return BOOK in player.inventory

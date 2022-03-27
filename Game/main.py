@@ -1,17 +1,17 @@
 from Base.Commands import *
-from Game.setup import setup
+from Game.example import setup, winCondition
 
 def parseCommand(command):
-  if command == ["north"] or command == ["n"]:
+  if "north" in command or "n" in command:
     moveNorth(player)
     return f'You move North and enter {player.location.name}'
-  elif command == ["south"] or command == ["s"]:
+  elif "south" in command or "s" in command:
     moveSouth(player)
     return f'You move South and enter {player.location.name}'
-  elif command == ["west"] or command == ["w"]:
+  elif "west" in command or "w" in command:
     moveWest(player)
     return f'You move West and enter {player.location.name}'
-  elif command == ["east"] or command == ["e"]:
+  elif "east" in command or "e" in command:
     moveEast(player)
     return f'You move East and enter {player.location.name}'
   elif command[0] == "take" or command[0] == "t":
@@ -22,11 +22,11 @@ def parseCommand(command):
     # assuming command[2] is 'in/on'
     placeItem(player, command[1], command[3])
     return f'You place {command[1]}'
-  elif command == ["look"] or command == ["l"]:
+  elif "look" in command or "l" in command:
     return player.location
-  elif command == ["inventory"] or command == ["i"]:
+  elif "inventory" in command or "i" in command:
     return player.str_inventory()
-  elif command == ["help"] or command == ["h"]:
+  elif "help" in command or "h" in command:
     return helpText()
   else:
     return "'" + " ".join(command) + "' is not a valid command\n" + helpText()
@@ -45,6 +45,10 @@ if __name__ == "__main__":
         break
 
       print(parseCommand(command))
+      if winCondition(player):
+        print(f'\033[1mYou win the game!\033[0m')
+        break
+
     except Exception as e:
       print(e)
 
