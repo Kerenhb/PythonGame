@@ -15,8 +15,11 @@ def parseCommand(command):
     moveEast(player)
     return f'You move East and enter {player.location.name}'
   elif command[0] == "take" or command[0] == "t":
-    # assuming command[2] is 'from'
-    takeItem(player, command[1], command[3])
+    if len(command) > 2:
+      # assuming command[2] is 'from'
+      takeItem(player, command[1], command[3])
+    else:
+      takeAnyItem(player, command[1])
     return f'You take {command[1]}'
   elif command[0] == "place" or command[0] == "p":
     # assuming command[2] is 'in/on'
@@ -32,7 +35,7 @@ def parseCommand(command):
     return "'" + " ".join(command) + "' is not a valid command\n" + helpText()
 
 if __name__ == "__main__":
-  player = setup("Keren")
+  player, livingRoom = setup("Keren")
 
   while True:
     print(player.location)
@@ -45,7 +48,7 @@ if __name__ == "__main__":
         break
 
       print(parseCommand(command))
-      if winCondition(player):
+      if winCondition(livingRoom):
         print(f'\033[1mYou win the game!\033[0m')
         break
 

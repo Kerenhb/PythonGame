@@ -83,6 +83,28 @@ class TestCommands(TestCase):
 
     self.assertEqual(testRoom1, player.location)
 
+  def test_takeAnyItem_existing(self):
+    draw = Storage([BOOK])
+    testRoom = Room("testRoom", "Description", {"draw": draw})
+    player = Player("Player", testRoom)
+
+    takeAnyItem(player, BOOK)
+    self.assertEqual("The draw is empty", draw.toString("draw"))
+    self.assertEqual("you're holding: book", player.str_inventory())
+
+  def test_takeAnyItem_missing(self):
+    draw = Storage()
+    testRoom = Room("testRoom", "Description", {"draw": draw})
+    player = Player("Player", testRoom)
+
+    try:
+      takeAnyItem(player, BOOK)
+    except Exception as e:
+      self.assertEqual('book is not in this room', str(e))
+
+    self.assertEqual("The draw is empty", draw.toString("draw"))
+    self.assertEqual("your pockets are empty", player.str_inventory())
+
   def test_takeItem_existing(self):
     draw = Storage([BOOK])
     testRoom = Room("testRoom", "Description", {"draw": draw})

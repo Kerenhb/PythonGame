@@ -1,16 +1,11 @@
 # Create
-## Main Game Class
-* Complete the basic example from https://medium.com/coinmonks/how-to-create-your-own-text-adventure-12df36411b7f
-  * Add object interactions as needed
-
-## Create my game
+## Create my game (seperate file)
 * With rooms, etc
 * Add object interactions as needed
 * Win condition ideas 
   * e.g. bookshelf contains book
   * Player is in X location (could be outside the map)
   * player inventory contains an item / key
-  * Put into a function so it's easier to change later
 
 # Misc Thoughts
 * Could add Examine (x) - provides a specific description of something present in the room or that the player is carrying.
