@@ -1,6 +1,4 @@
 # Create
-* Create North/South and east/west (static) link functions, so it updates both rooms in one line,
-every time.
 * Could make it so that every door can be locked 
   * Maybe add a link class or something to ensure that both sides are unlocked
   * not really relevant for getting out though, so could just make an exception for the front door

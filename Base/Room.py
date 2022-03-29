@@ -18,15 +18,19 @@ class Room:
 
   def set_north(self, room):
     self.north = room
+    room.south = self
 
   def set_south(self, room):
     self.south = room
+    room.north = self
 
   def set_west(self, room):
     self.west = room
+    room.east = self
 
   def set_east(self, room):
     self.east = room
+    room.west = self
 
   def str_adjacent(self):
     output = ""

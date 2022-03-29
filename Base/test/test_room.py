@@ -45,3 +45,35 @@ class TestRoom(TestCase):
         "\nSouth is Name2"
         "\nWest is Name3",
         str(testRoom1))
+
+  def test_set_north(self):
+    testRoom1 = Room("Name1", "Description1")
+    testRoom2 = Room("Name2", "Description2")
+
+    testRoom1.set_north(testRoom2)
+    self.assertEqual(testRoom2, testRoom1.north)
+    self.assertEqual(testRoom1, testRoom2.south)
+
+  def test_set_south(self):
+    testRoom1 = Room("Name1", "Description1")
+    testRoom2 = Room("Name2", "Description2")
+
+    testRoom1.set_south(testRoom2)
+    self.assertEqual(testRoom2, testRoom1.south)
+    self.assertEqual(testRoom1, testRoom2.north)
+
+  def test_set_west(self):
+    testRoom1 = Room("Name1", "Description1")
+    testRoom2 = Room("Name2", "Description2")
+
+    testRoom1.set_west(testRoom2)
+    self.assertEqual(testRoom2, testRoom1.west)
+    self.assertEqual(testRoom1, testRoom2.east)
+
+  def test_set_east(self):
+    testRoom1 = Room("Name1", "Description1")
+    testRoom2 = Room("Name2", "Description2")
+
+    testRoom1.set_east(testRoom2)
+    self.assertEqual(testRoom2, testRoom1.east)
+    self.assertEqual(testRoom1, testRoom2.west)

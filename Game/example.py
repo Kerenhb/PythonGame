@@ -14,16 +14,12 @@ def setup(playerName):
 
   # Hallway
   hallway = Room("The Hallway", "An empty hallway")
+  hallway.set_north(bedroom)
 
   # Living Room
   bookshelf = Storage()
   livingRoom = Room("Living Room", "This is a small room with a couch in "
                     "the middle. On one wall there is a bookshelf.", {"bookshelf": bookshelf})
-
-  # Connections
-  bedroom.set_south(hallway)
-  hallway.set_north(bedroom)
-  hallway.set_east(livingRoom)
   livingRoom.set_west(hallway)
 
   # Player
